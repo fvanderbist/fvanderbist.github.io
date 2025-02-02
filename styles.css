@@ -1,10 +1,111 @@
-body {
-    background-color:rgb(2, 2, 2);
-  }
+#login-screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+#login-screen input {
+    padding: 10px;
+    margin: 10px;
+    font-size: 18px;
+}
+#login-screen button {
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 h1 {
-    color: yellow;
+    color: rgb(214,0,0);
     font-size: 300%;
 }
+
+h2 {
+    color: rgb(214,0,0);
+    font-size: 100%;
+}
+
 p {
     color: white;
+}
+
+/*font family from google fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
+
+
+body {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    background-color: rgb(2, 2, 2);
+    height: 100vh;
+}
+
+#clock {
+    max-width: 600px;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("pictures/background.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    background-color: rgb(2, 2, 2);
+    height: 100vh;
+}
+
+table {
+    border-collapse: collapse;
+    table-layout: auto; /* Allows cells to shrink */
+    display: none; /* Hidden until authenticated */
+}
+td {
+    border: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for absolute positioning of the content area */
+    cursor: pointer;
+}
+img {
+    width: 100px; /* Adjust size as needed */
+    height: auto; /* Keeps aspect ratio */
+}
+
+#content-area {
+    position: absolute;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    display: none; /* Hidden by default */
+    white-space: nowrap;
 }
