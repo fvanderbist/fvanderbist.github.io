@@ -67,17 +67,39 @@ function checkSecret() {
   }
 }
 
-function updateContent(event, content) {
-  let contentArea = document.getElementById("content-area");
-  contentArea.innerHTML = content;
+async function updateContent(event, filename) {
+  const contentArea = document.getElementById("content-area");
 
-  let td = event.currentTarget;
-  let rect = td.getBoundingClientRect();
+  try {
+      console.log(`Fetching: ${filename}`); // Debugging log
+      const response = await fetch(filename);
 
-  contentArea.style.left = `${rect.right + 10}px`;
-  contentArea.style.top = `${rect.top}px`;
-  contentArea.style.display = "block";
+      if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const htmlContent = await response.text();
+      console.log("File content loaded:", htmlContent); // Debugging log
+
+      contentArea.innerHTML = htmlContent; // Insert raw HTML
+      contentArea.style.display = "block"; // Show content area
+
+      // Position the content area next to the clicked cell
+      const cell = event.target.closest("td");
+      if (cell) {
+          const rect = cell.getBoundingClientRect();
+          contentArea.style.position = "absolute";
+          contentArea.style.top = `${rect.top + window.scrollY}px`;
+          contentArea.style.left = `${rect.right + 10}px`;
+      }
+  } catch (error) {
+      console.error("Error loading file:", error);
+      contentArea.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+  }
 }
+
+
+
 
 // Hide content when clicking elsewhere
 document.addEventListener("click", function (event) {

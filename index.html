@@ -21,8 +21,7 @@
         </div>
         <table id="secure-table">
             <tr>
-                <td onclick="updateContent(event, 'Details about Image 1')"><img src="pictures/mongdb.webp"
-                        alt="Image 1">
+                <td onclick="updateContent(event, 'mongodb.html')"><img src="pictures/mongodb.webp" alt="Image 1">
                 </td>
             </tr>
             <tr>
@@ -37,12 +36,16 @@
             </tr>
         </table>
         <!-- Content Display Area -->
-        <div id="content-area">Click on an image to see content here</div>
+        <div id="content-area"
+            style="display: none; position: absolute; background: white; border: 1px solid black; padding: 10px;">
+        </div>
 
-        <h2>Enter Secret to Hash:</h2>
-        <input type="text" id="input-secret" placeholder="Enter secret">
-        <button onclick="hashSecret()">Generate Hash</button>
-        <p id="hash-output"></p>
+        <div class="right-aligned">
+            <h2>Enter Secret to Hash:</h2>
+            <input type="text" id="input-secret" placeholder="Enter secret">
+            <button onclick="hashSecret()">Generate Hash</button>
+            <p id="hash-output"></p>
+        </div>
     </div>
 
     <script src="main.js" type="text/javascript"></script>
