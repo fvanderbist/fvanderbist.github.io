@@ -34,21 +34,27 @@ p {
     color: white;
 }
 
+.ip-container {
+    display: flex;
+    align-items: center;
+    gap: 100px; /* Adjust spacing between text and IP */
+}
+
 /*font family from google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
 
-
 body {
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    background-image: url("pictures/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: darken;
+    color: white;
     font-family: "Oswald", sans-serif;
-    background-color: rgb(2, 2, 2);
-
-    font-size: 16px;
-    padding: 20px;
+    padding: 10px;
 }
+
 
 /* Styles for screens with a maximum width of 768px (tablets and smartphones) */
 @media (max-width: 768px) {
@@ -77,24 +83,30 @@ html {
 }
 
 .bg {
-    /* The image used */
+    position: fixed; /* Covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    /* Background Image */
     background-image: url("pictures/background.jpg");
-
-    /* Full height */
-    height: 100%;
-
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
-    margin: 0;
+    /* Dark overlay for better readability */
+    background-color: rgba(0, 0, 0, 0.5); /* Adds slight darkness */
+    background-blend-mode: darken; /* Merges background color with image */
+
+    /* Flexbox to center content */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     text-align: center;
     font-family: "Oswald", sans-serif;
-    background-color: rgb(2, 2, 2);
-    height: 100vh;
 }
 
 ul {
