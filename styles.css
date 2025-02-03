@@ -45,7 +45,25 @@ body {
     text-align: center;
     font-family: "Oswald", sans-serif;
     background-color: rgb(2, 2, 2);
-    height: 100vh;
+
+    font-size: 16px;
+    padding: 20px;
+}
+
+/* Styles for screens with a maximum width of 768px (tablets and smartphones) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Styles for screens with a maximum width of 480px (smartphones) */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px;
+        padding: 5px
+    }
 }
 
 #clock {
@@ -92,7 +110,7 @@ ul li span {
     align-items: left;
 }
 ul li code {
-    min-width: 600px; /* Ajustez cette valeur selon vos besoins */
+    min-width: auto; /* Ajustez cette valeur selon vos besoins */
     text-align: right;
 }
 
@@ -116,14 +134,21 @@ img {
 }
 
 #content-area {
-    position: absolute;
+    position: fixed;  /* Stays in place even when scrolling */
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Exact width of the viewport */
+    max-width: 90%;  /* Ensures it never overflows */
+    height: auto;  /* Adjusts based on content */
+    max-height: 100vh;  /* Prevents it from being taller than the screen */
+    overflow-y: auto;  /* Adds scrolling if content is too long */
     background: rgb(124, 123, 123);
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 10px;
-    font-size: 12px;
+    padding: 20px;
+    font-size: 16px;
     text-align: left;
     display: none; /* Hidden by default */
-    white-space: nowrap;
-    width: auto;
+    white-space: normal; /* Allow text wrapping */
+    box-sizing: border-box; /* Ensures width includes padding & border */
 }
