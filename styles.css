@@ -117,7 +117,7 @@ img {
 
 #content-area {
     position: absolute;
-    background: white;
+    background: rgb(124, 123, 123);
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 10px;
