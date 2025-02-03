@@ -1,2 +1,25 @@
-<h2>MongoDB</h2>
-<p>This is dynamically loaded content about MongoDB.</p>
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h2>MongoDB</h2>
+    <ul>
+        <li><span>To show databases <code>show dbs</code></span></li>
+        <li><span>To use a database <code>use database_name</code></span></li>
+        <li><span>To show collections <code>show collections</code></span></li>
+        <li><span>To group by and count <code>db.collection_name.aggregate([
+            { $group: { _id: "$city", total: { $sum: 1 } } }
+        ]);</code></span></li>
+        <li><span>To display by order ascending <code>db.collection_name.find().sort({ age: 1 });</code></span></li>
+        <li><span>To display by order descending <code>db.collection_name.find().sort({ age: -1 });</code></span></li>
+    </ul>
+</body>
+
+</html>

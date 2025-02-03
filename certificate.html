@@ -1,0 +1,29 @@
+<html lang="en">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h2>Open_ssl</h2>
+    <ul>
+        <li><span>To generate a public key from a private key <code>openssl rsa -in private.key -pubout -out public.key
+        </code></span></li>
+        <li><span>To check a certificate <code>openssl x509 -in certificate.crt -text -noout
+        </code></span></li>
+        <li><span>To check an SSL connection <code>openssl s_client -connect www.example.com:443
+        </code></span></li>
+        <li><span>To check a mTLS connection <code>openssl s_client -connect host:port -cert client.crt -key client.key -CAfile ca_cert.pem
+        </code></span></li>
+    </ul>
+    <h2>ssh-keygen</h2>
+    <ul>
+        <li><span>To generate a pair of ssh keys <code>ssh-keygen -t rsa -b 2048 -f my_ssh_key      </code></span></li>
+    </ul>  
+</body>
+
+</html>
