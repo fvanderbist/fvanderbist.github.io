@@ -18,6 +18,29 @@
         <li><span>To list virtual services </span> <span class="dots"></span> <code>kubectl get vs -n <i>namespace</i></code></li>
         <li><span>To list destination rules </span> <span class="dots"></span> <code>kubectl get dr -n <i>namespace</i></code></li>
     </ul>
+    <h2>Redis</h2>
+    <ul>
+        <li><span>To clean Redis cache </span> <span class="dots"></span> <code>kubectl apply -f redis-cleanup.yaml -n <i>namespace</i></code></li>
+        <ul>
+            <li><span white-space: pre> <br/>with redis-cleanup.yaml</span> 
+                <pre>
+                apiVersion: batch/v1
+                kind: Job
+                metadata:
+                  name: redis-cleanup
+                spec:
+                  template:
+                    spec:
+                      containers:
+                      - name: redis-cli
+                        image: redis:6.2
+                        command: ["redis-cli"]
+                        args: ["-h", "REDIS_HOST", "-p", "6379", "FLUSHALL"]
+                      restartPolicy: Never
+                  backoffLimit: 4
+                </pre></li>
+        </ul>
+    </ul>
 </body>
 
 </html>
