@@ -7,23 +7,6 @@ fetch('https://api.ipify.org?format=json')
     .catch(error => console.error('Error fetching IP address:', error));
 
 //------------------------------------------------Outils
-async function checkIncognito() {
-  let isIncognito = false;
-  
-  if ('storage' in navigator && 'estimate' in navigator.storage) {
-      try {
-          const quota = await navigator.storage.estimate();
-          if (quota.quota < 120000000) {
-              isIncognito = true;
-          }
-      } catch (e) {
-          isIncognito = true;
-      }
-  }
-  
-  document.getElementById("incognito-status").innerText = isIncognito ? "Incognito: ON" : "Incognito: OFF";
-}
-
 async function measureLatency() {
   const start = performance.now();
   await fetch("https://www.google.com", { mode: "no-cors" });
@@ -31,9 +14,28 @@ async function measureLatency() {
   document.getElementById("latency-status").innerText = `Latency: ${latency} ms`;
 }
 
+async function checkNetworkInfo() {
+  if ('connection' in navigator) {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    document.getElementById("connection-type").innerText = `Connection Type: ${connection.type || 'Unknown'}`;
+    document.getElementById("downlink-speed").innerText = `Downlink Speed: ${connection.downlink} Mbps`;
+    document.getElementById("effective-connection-type").innerText = `Effective Connection Type: ${connection.effectiveType}`;
+  } else {
+    document.getElementById("connection-type").innerText = "Connection Type: Not available";
+    document.getElementById("downlink-speed").innerText = "Downlink Speed: Not available";
+    document.getElementById("effective-connection-type").innerText = "Effective Connection Type: Not available";
+  }
+}
+
 // Lancer toutes les vérifications au chargement
 window.onload = function () {
   checkIncognito();
+  measureLatency();
+  checkNetworkInfo();
+};
+
+window.onload = function () {
+  checkNetworkInfo();
   measureLatency();
 };
 
