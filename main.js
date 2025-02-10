@@ -1,3 +1,4 @@
+//------------------------------------------------IP
 fetch('https://api.ipify.org?format=json')
     .then(response => response.json())
     .then(data => {
@@ -6,6 +7,7 @@ fetch('https://api.ipify.org?format=json')
     .catch(error => console.error('Error fetching IP address:', error));
 
 
+//------------------------------------------------Date
 window.addEventListener("load", () => {
   clock();
   function clock() {
@@ -56,7 +58,7 @@ window.addEventListener("load", () => {
 });
 
 
-// Store the correct hashed secret for comparison
+//------------------------------------------------Secret
 const HASHED_SECRET = "652c7dc687d98c9889304ed2e408c74b611e86a40caa51c4b43f1dd5913c5cd0"; // Hashed "1234"
 
 function checkSecret() {
@@ -74,59 +76,16 @@ function checkSecret() {
     alert("Incorrect secret code!");
   }
 }
-
-async function updateContent(event, filename) {
-  const contentArea = document.getElementById("content-area");
-
-  try {
-      console.log(`Fetching: ${filename}`); // Debugging log
-      const response = await fetch(filename);
-
-      if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const htmlContent = await response.text();
-      console.log("File content loaded:", htmlContent); // Debugging log
-
-      contentArea.innerHTML = htmlContent; // Insert raw HTML
-      contentArea.style.display = "block"; // Show content area
-
-      // Position the content area next to the clicked cell
-      const cell = event.target.closest("td");
-      if (cell) {
-          const rect = cell.getBoundingClientRect();
-          contentArea.style.position = "absolute";
-          contentArea.style.top = `${rect.top + window.scrollY}px`;
-          contentArea.style.left = `${rect.right + 10}px`;
-      }
-  } catch (error) {
-      console.error("Error loading file:", error);
-      contentArea.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
-  }
-}
-
-
-
-
-// Hide content when clicking elsewhere
-document.addEventListener("click", function (event) {
-  let contentArea = document.getElementById("content-area");
-  if (!event.target.closest("td")) {
-    contentArea.style.display = "none";
-  }
-});
-
 // Check if already authenticated
 if (sessionStorage.getItem("authenticated") === "true") {
   document.getElementById("login-screen").style.display = "none";
   document.getElementById("secure-table").style.display = "block";
 }
 
-async function hash(input) {
+async function hash(input, algorithm) {
   const encoder = new TextEncoder();
   const data = encoder.encode(input);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashBuffer = await crypto.subtle.digest(algorithm, data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
 }
@@ -134,10 +93,48 @@ async function hash(input) {
 // Function to trigger hashing on button click
 async function hashSecret() {
   const input = document.getElementById("input-secret").value;
+  const algorithm = document.getElementById("sha-algorithm").value;
+  
   if (input) {
-    const hashed = await hash(input);
-    document.getElementById("hash-output").innerText = `Hash: ${hashed}`;
+    const hashed = await hash(input, algorithm);
+    document.getElementById("hash-output").innerText = `Hash (${algorithm}): ${hashed}`;
   } else {
     alert("Please enter a secret!");
   }
 }
+
+
+//------------------------------------------------Content-area management
+async function updateContent(event, filename) {
+    const contentArea = document.getElementById("content-area");
+
+    try {
+        console.log(`Fetching: ${filename}`); // Debugging log
+        const response = await fetch(filename);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const htmlContent = await response.text();
+        console.log("File content loaded:", htmlContent); // Debugging log
+
+        contentArea.innerHTML = htmlContent; // Insert raw HTML
+        contentArea.style.visibility = "visible"; // Ensure it remains visible
+
+    } catch (error) {
+        console.error("Error loading file:", error);
+        contentArea.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+    }
+}
+
+// Prevent content from disappearing when clicking outside
+document.addEventListener("click", (event) => {
+    const table = document.getElementById("secure-table");
+    const contentArea = document.getElementById("content-area");
+
+    if (!table.contains(event.target) && !contentArea.contains(event.target)) {
+        contentArea.style.visibility = "hidden";
+    }
+});
+

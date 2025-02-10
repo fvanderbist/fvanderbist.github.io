@@ -9,11 +9,13 @@
     background: rgba(0, 0, 0, 0.8);
     color: white;
 }
+
 #login-screen input {
     padding: 10px;
     margin: 10px;
     font-size: 18px;
 }
+
 #login-screen button {
     padding: 10px 20px;
     font-size: 18px;
@@ -37,7 +39,8 @@ p {
 .ip-container {
     display: flex;
     align-items: center;
-    gap: 100px; /* Adjust spacing between text and IP */
+    gap: 100px;
+    /* Adjust spacing between text and IP */
 }
 
 /*font family from google fonts*/
@@ -83,12 +86,13 @@ html {
 }
 
 .bg {
-    position: fixed; /* Covers the entire screen */
+    position: fixed;
+    /* Covers the entire screen */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    
+
     /* Background Image */
     background-image: url("pictures/background.jpg");
     background-position: center;
@@ -96,71 +100,96 @@ html {
     background-size: cover;
 
     /* Dark overlay for better readability */
-    background-color: rgba(0, 0, 0, 0.5); /* Adds slight darkness */
-    background-blend-mode: darken; /* Merges background color with image */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adds slight darkness */
+    background-blend-mode: darken;
+    /* Merges background color with image */
 
     /* Flexbox to center content */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     text-align: center;
     font-family: "Oswald", sans-serif;
 }
 
 ul {
-    padding: 0;
-    list-style-type: disc;
+    padding-left: 20px; /* Keep indentation for bullets */
 }
-ul li {
-    display: list-item;
-}
-ul li span {
+
+li {
     display: flex;
+    align-items: top;
     justify-content: space-between;
-    align-items: left;
+    font-size: 16px;
+    padding: 5px 0;
+    white-space: nowrap;
+    list-style-type: disc; /* Restore bullets */
 }
-ul li code {
-    min-width: auto; /* Ajustez cette valeur selon vos besoins */
-    text-align: right;
+
+.desc {
+    flex: 1;
+    white-space: nowrap;
+}
+
+.dots {
+    flex: 1;
+    border-bottom: 1px dotted gray;
+    margin: 0 8px;
+}
+
+code {
+    white-space: nowrap;
+    font-family: monospace;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
 }
 
 table {
     border-collapse: collapse;
-    table-layout: auto; /* Allows cells to shrink */
-    display: none; /* Hidden until authenticated */
+    table-layout: auto;
+    /* Allows cells to shrink */
+    display: none;
+    /* Hidden until authenticated */
 }
+
 td {
     border: none;
     padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Needed for absolute positioning of the content area */
+    position: relative;
+    /* Needed for absolute positioning of the content area */
     cursor: pointer;
 }
+
 img {
-    height: 50px; /* Adjust size as needed */
-    width: auto; /* Keeps aspect ratio */
+    height: 50px;
+    /* Adjust size as needed */
+    width: auto;
+    /* Keeps aspect ratio */
 }
 
 #content-area {
-    position: fixed;  /* Stays in place even when scrolling */
-    top: 0;
-    left: 0;
-    width: 100vw;  /* Exact width of the viewport */
-    max-width: 90%;  /* Ensures it never overflows */
-    height: auto;  /* Adjusts based on content */
-    max-height: 100vh;  /* Prevents it from being taller than the screen */
-    overflow-y: auto;  /* Adds scrolling if content is too long */
-    background: rgb(124, 123, 123);
+    position: fixed;  /* Always stay in the same place */
+    top: 20%;          /* Adjust vertical position */
+    right: 20px;       /* Stick to the right side */
+    width: 90%;      /* Adjust width as needed */
+    height: auto;      /* Adjust height dynamically */
+    max-height: 70vh;  /* Prevent overflow */
+    overflow-y: auto;  /* Scroll if content is too long */
+    background: rgba(124, 123, 123, 0.9);
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
     font-size: 16px;
     text-align: left;
-    display: none; /* Hidden by default */
-    white-space: normal; /* Allow text wrapping */
-    box-sizing: border-box; /* Ensures width includes padding & border */
+    display: block;    /* Always visible */
+    white-space: normal;
+    box-sizing: border-box;
+    visibility: hidden; /* Start hidden until clicked */
 }

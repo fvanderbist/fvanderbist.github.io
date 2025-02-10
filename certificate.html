@@ -11,23 +11,34 @@
 <body>
     <h2>Open_ssl</h2>
     <ul>
-        <li><span>To generate a public key from a private key <code>openssl rsa -in private.key -pubout -out public.key
-        </code></span></li>
-        <li><span>To check a certificate <code>openssl x509 -in certificate.crt -text -noout
-        </code></span></li>
-        <li><span>To check an SSL connection <code>openssl s_client -connect www.example.com:443
-        </code></span></li>
-        <li><span>To check a mTLS connection <code>openssl s_client -connect host:port -cert client.crt -key client.key -CAfile ca_cert.pem
-        </code></span></li>
-        <li><span>To get cacerts of a server <code>openssl s_client -showcerts -connect host:port</code></span></li>
+        <li><span>To generate a public key from a private key </span> <span class="dots"></span><code>openssl rsa -in private.key -pubout -out public.key
+        </code></li>
+        <li><span>To check a certificate </span> <span class="dots"></span><code>openssl x509 -in certificate.crt -text -noout
+        </code></li>
+        <li><span>To check an SSL connection </span> <span class="dots"></span><code>openssl s_client -connect <i>host</i>:<i>port</i>
+        </code></li>
+        <li><span>To check a mTLS connection </span> <span class="dots"></span><code>openssl s_client -connect <i>host</i>:<i>port</i> -cert client.crt -key client.key -CAfile ca_cert.pem
+        </code></li>
+        <li><span>To get cacerts of a server </span> <span class="dots"></span><code>openssl s_client -showcerts -connect <i>host</i>:<i>port</i></code></li>
+        <li> <span>Check if private key and cert are related</span>
+            <ul>
+              <li><span>first with the certificate</span><span class="dots"></span><code>openssl x509 -noout -modulus -in tls.crt | openssl md5</code></li>
+              <li><span>then with the key</span><span class="dots"></span><code>openssl rsa -noout -modulus -in tls.key | openssl md5</code></li>
+            </ul>
+        </li>
+
     </ul>
     <h2>ssh-keygen</h2>
     <ul>
-        <li><span>To generate a pair of ssh keys <code>ssh-keygen -t rsa -b 2048 -f my_ssh_key      </code></span></li>
+        <li><span>To generate a pair of ssh keys </span> <span class="dots"></span><code>ssh-keygen -t rsa -b 2048 -f my_ssh_key      </code></li>
     </ul>
     <h2>curl</h2>
     <ul>
-        <li><span>Very verbose simple curl <code>curl -vvv https://host</code></span></li>
+        <li><span>Very verbose simple curl </span> <span class="dots"></span><code>curl -vvv https://host</code></li>
+    </ul>
+    <h2>nmap</h2>
+    <ul>
+        <li><span>To list all the ciphersuites that a server accepts </span> <span class="dots"></span><code>nmap --script ssl-enum-ciphers -p <i>port</i> <i>host</i></code></li>
     </ul>
 </body>
 
