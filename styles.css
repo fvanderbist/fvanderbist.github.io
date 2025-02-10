@@ -36,12 +36,21 @@ p {
     color: white;
 }
 
-.ip-container {
+.network-info-container {
     display: flex;
-    align-items: center;
-    gap: 100px;
-    /* Adjust spacing between text and IP */
+    width: 100%;
 }
+
+.ip-container {
+    flex: 0 0 70%;
+    padding: 10px;
+}
+
+#info-box {
+    flex: 0 0 30%;
+    padding: 10px;
+}
+
 
 /*font family from google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
