@@ -193,3 +193,15 @@ img {
     box-sizing: border-box;
     visibility: hidden; /* Start hidden until clicked */
 }
+
+#info-box {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: yellow;
+    padding: 5px;
+    border-left: 2px solid yellow;
+    font-size: 12px;
+    text-align: left;
+    line-height: 1.2;
+}

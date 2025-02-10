@@ -6,6 +6,38 @@ fetch('https://api.ipify.org?format=json')
     })
     .catch(error => console.error('Error fetching IP address:', error));
 
+//------------------------------------------------Outils
+async function checkIncognito() {
+  let isIncognito = false;
+  
+  if ('storage' in navigator && 'estimate' in navigator.storage) {
+      try {
+          const quota = await navigator.storage.estimate();
+          if (quota.quota < 120000000) {
+              isIncognito = true;
+          }
+      } catch (e) {
+          isIncognito = true;
+      }
+  }
+  
+  document.getElementById("incognito-status").innerText = isIncognito ? "Incognito: ON" : "Incognito: OFF";
+}
+
+async function measureLatency() {
+  const start = performance.now();
+  await fetch("https://www.google.com", { mode: "no-cors" });
+  const latency = Math.round(performance.now() - start);
+  document.getElementById("latency-status").innerText = `Latency: ${latency} ms`;
+}
+
+// Lancer toutes les vérifications au chargement
+window.onload = function () {
+  checkIncognito();
+  measureLatency();
+};
+
+
 
 //------------------------------------------------Date
 window.addEventListener("load", () => {
