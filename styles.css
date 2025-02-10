@@ -33,7 +33,7 @@ h2 {
 }
 
 p {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .network-info-container {
@@ -60,7 +60,7 @@ p {
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
 
 body {
-    background-color: rgb(83,83,83);
+    background-color: rgb(255, 255, 255);
     background-blend-mode: darken;
     color: white;
     font-family: "Oswald", sans-serif;
@@ -92,30 +92,6 @@ body,
 html {
     height: 100%;
     margin: 0;
-}
-
-.bg {
-    position: fixed;
-    /* Covers the entire screen */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-
-    /* Dark overlay for better readability */
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Adds slight darkness */
-    background-blend-mode: darken;
-    /* Merges background color with image */
-
-    /* Flexbox to center content */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    font-family: "Oswald", sans-serif;
 }
 
 ul {
@@ -172,12 +148,11 @@ td {
 
 img {
     height: 50px;
-    /* Adjust size as needed */
     width: auto;
-    /* Keeps aspect ratio */
 }
 
 #content-area {
+    margin-top: 100px; /* Adjust the value as needed */
     position: fixed;  /* Always stay in the same place */
     top: 20%;          /* Adjust vertical position */
     right: 20px;       /* Stick to the right side */
@@ -185,7 +160,7 @@ img {
     height: auto;      /* Adjust height dynamically */
     max-height: 70vh;  /* Prevent overflow */
     overflow-y: auto;  /* Scroll if content is too long */
-    background: rgba(124, 123, 123, 0.9);
+    background: rgb(83,83,83);
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 20px;
