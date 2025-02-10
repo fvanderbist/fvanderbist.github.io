@@ -39,6 +39,10 @@ p {
 .network-info-container {
     display: flex;
     width: 100%;
+    background-image: url("pictures/background.jpg");
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    padding: 20px; /* Optional: Adds some padding */
 }
 
 .ip-container {
@@ -56,11 +60,7 @@ p {
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap");
 
 body {
-    background-image: url("pictures/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(83,83,83);
     background-blend-mode: darken;
     color: white;
     font-family: "Oswald", sans-serif;
@@ -101,12 +101,6 @@ html {
     left: 0;
     width: 100vw;
     height: 100vh;
-
-    /* Background Image */
-    background-image: url("pictures/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 
     /* Dark overlay for better readability */
     background-color: rgba(0, 0, 0, 0.5);
