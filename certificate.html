@@ -30,6 +30,8 @@
     </ul>
     <h2>ssh-keygen</h2>
     <ul>
+        <li><span>To generate a pair of ssh keys </span> <span class="dots"></span><code>ssh-keygen -t rsa -b 2048 -f my_ssh_key</code></li>
+        <li><span>To generate public key for private key </span> <span class="dots"></span><code>ssh-keygen -y -e -f private-key</code></li>
         <li><span>To generate a pair of ssh keys </span> <span class="dots"></span><code>ssh-keygen -t rsa -b 2048 -f my_ssh_key      </code></li>
     </ul>
     <h2>curl</h2>
@@ -38,6 +40,10 @@
         <li><span>Check mTLS </span> <span class="dots"></span><code>curl -X POST/GET  -H "Content-Type: application/json"   https://<i>host</i>/<i>servicePath</i> --cacert cacert.pem --cert cert.pem --key key.key</code></li>
     </ul>
     <h2>nmap</h2>
+    <ul>
+        <li><span>To list all the ciphersuites that a server accepts </span> <span class="dots"></span><code>nmap --script ssl-enum-ciphers -p <i>port</i> <i>host</i></code></li>
+    </ul>
+    <h2>keytool</h2>
     <ul>
         <li><span>To list all the ciphersuites that a server accepts </span> <span class="dots"></span><code>nmap --script ssl-enum-ciphers -p <i>port</i> <i>host</i></code></li>
     </ul>
