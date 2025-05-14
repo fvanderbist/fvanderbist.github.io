@@ -27,6 +27,12 @@
             </ul>
         </li>
         <li><span>To check if it is a self-signed certificat (if both are identical)</span> <span class="dots"></span><code>openssl x509 -in certificat.pem -noout -subject -issuer</code></li>
+        <li><span>To get the CA of a certificat</span> <span class="dots"></span><code>openssl x509 -in certificat.pem -noout -text | grep -A 10 "Authority Information Access"</code>
+            <ul>
+              <li><span>then run </span><span class="dots"></span><code>curl -o intermédiaire.der <i>URL</i></code></li>
+              <li><span>transform it into a pem</span><span class="dots"></span><code>openssl x509 -inform der -in intermédiaire.der -out intermédiaire.pem</code></li>
+            </ul>
+        </li>
     </ul>
     <h2>ssh-keygen</h2>
     <ul>
