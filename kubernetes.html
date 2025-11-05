@@ -13,6 +13,8 @@
     <ul>
         <li><span>To create a busy box </span> <span class="dots"></span> <code>kubectl run -n <i>namespace</i> -i --tty busybox --image=461232396433.dkr.ecr.eu-west-1.amazonaws.com/dxp-busybox-152588:latest</code></li>
         <li><span>To open a shell inside a pod </span> <span class="dots"></span> <code>kubectl exec -n <i>namespace</i> -it <i>pod</i> -- /bin/bash</code></li>
+        <li><span>To open a shell inside a pod in istio-proxy container</span> <span class="dots"></span> <code>kubectl exec -n <i>namespace</i> -it <i>pod</i> -c istio-proxy -- /bin/bash</code></li>
+        <li><span>To open a shell inside a new fresh container in a pod </span> <span class="dots"></span> <code>kubectl debug --image istio/base --target istio-proxy -it <i>pod</i> -n <i>namespace</i></code></li>
         <li><span>Edit limit range </span> <span class="dots"></span> <code>kubectl -n <i>namespace</i> edit limitranges</code></li>
         <li><span>To scale up/down all deployments </span> <span class="dots"></span> <code>kubectl scale deployment -n <i>namespace</i> --replicas=0 --all</code></li>
         <li><span>Same in case of HPA </span> <span class="dots"></span> <code>kubectl get hpa -n <i>namespace</i> -o name | xargs -I{} kubectl patch {} -n <i>namespace</i> --type='merge' -p '{"spec":{"minReplicas":2}}'</code></li>
