@@ -183,3 +183,8 @@ img {
     text-align: left;
     line-height: 1.2;
 }
+
+.lien-blanc {
+    color: white;
+    text-decoration: none;
+}
