@@ -16,6 +16,35 @@
             To extract any secrets values from a cluster in base64. Run python getAllSecretsInBase64.py <i>namespace</i>
         </a></li>
     </ul>
+    <h2> - for keystore and trustore</h2>
+    <ul>
+        <li><a href="python/cert_to_keystore.py" download="cert_to_keystore.py" class="lien-blanc">
+            To create keystore with ibm (stet) key must be equal to pwd of the private key. Type <b>python cert_to_keystore.py</b>, then answer the question. Alias is ibm
+        </a></li>
+    </ul>
+    <ul>
+        <li><a href="python/cert_to_truststore.py" download="cert_to_truststore.py" class="lien-blanc">
+            To create trustore. Type <b>phyton cert_to_truststore.py</b> then answer the question, alias can be set up. Run it several time to add several entries
+        </a></li>
+    </ul>
+    <ul>
+        <li><a href="python/cert_to_keystore_multi.py" download="cert_to_keystore_multi.py" class="lien-blanc">
+            To create keystore with 2 alias (kafka and file). Open the script to change ns.
+            Type <b>python cert_to_keystore_multi.py</b>. <br/>
+            You first have to edit the python script to select correct pem and private key<br/>
+            <pre>
+            {
+            "alias": "file",
+            "cert_path": "nglmks_file.pem",
+            "key_path": "nglmks_file.pkey"
+            },
+            {
+            "alias": "kafka",
+            "cert_path": "nglmks_kafka.pem",
+            "key_path": "nglmks_kafka.pkey"
+            } </pre>
+        </a></li>
+    </ul>
 </body>
 
 </html>
